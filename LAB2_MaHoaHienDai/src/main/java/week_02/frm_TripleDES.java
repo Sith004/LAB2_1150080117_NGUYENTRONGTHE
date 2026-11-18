@@ -1,0 +1,228 @@
+package week_02;
+
+import javax.swing.JOptionPane;
+
+public class frm_TripleDES extends javax.swing.JFrame {
+
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frm_TripleDES.class.getName());
+
+    public frm_TripleDES() {
+        initComponents();
+        setLocationRelativeTo(null);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lbl_status = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_plaintext = new javax.swing.JTextArea();
+        txt_key = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_ciphertext = new javax.swing.JTextArea();
+        btn_encrypt = new javax.swing.JButton();
+        btn_decrypt = new javax.swing.JButton();
+        btn_save = new javax.swing.JButton();
+        btn_open = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("TripleDES Cipher");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("MẬT MÃ TRIPLEDES (3DES)");
+
+        jLabel2.setText("Plaintext:");
+
+        jLabel3.setText("Key:");
+
+        jLabel4.setText("Ciphertext:");
+
+        lbl_status.setText("Sẵn sàng.");
+
+        txt_plaintext.setColumns(20);
+        txt_plaintext.setLineWrap(true);
+        txt_plaintext.setRows(3);
+        jScrollPane1.setViewportView(txt_plaintext);
+
+        txt_key.setText("123456789012345678901234");
+
+        jLabel6.setText(" Đúng 24 ký tự (24 byte)");
+
+        txt_ciphertext.setColumns(20);
+        txt_ciphertext.setLineWrap(true);
+        txt_ciphertext.setRows(3);
+        jScrollPane2.setViewportView(txt_ciphertext);
+
+        btn_encrypt.setText("Encrypt");
+        btn_encrypt.addActionListener(this::btn_encryptActionPerformed);
+
+        btn_decrypt.setText("Decrypt");
+        btn_decrypt.addActionListener(this::btn_decryptActionPerformed);
+
+        btn_save.setText("Save File");
+        btn_save.addActionListener(this::btn_saveActionPerformed);
+
+        btn_open.setText("Open File");
+        btn_open.addActionListener(this::btn_openActionPerformed);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(333, 333, 333))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(315, 315, 315))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_status)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txt_key, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel6))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_encrypt)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_decrypt)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_save)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btn_open))
+                                    .addComponent(jScrollPane2)
+                                    .addComponent(jScrollPane1))))
+                        .addContainerGap(27, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_key, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_encrypt)
+                    .addComponent(btn_decrypt)
+                    .addComponent(btn_save)
+                    .addComponent(btn_open))
+                .addGap(18, 18, 18)
+                .addComponent(lbl_status)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_encryptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_encryptActionPerformed
+        String plaintext = txt_plaintext.getText();
+        if (plaintext.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hãy nhập Plaintext trước khi mã hóa.");
+            return;
+        }
+        try {
+            String ciphertext = TripleDESCipher.encrypt(plaintext, txt_key.getText());
+            txt_ciphertext.setText(ciphertext);
+            lbl_status.setText("<html>Đã mã hóa TripleDES. " + HistoryDao.tryInsert("TripleDES", "ENCRYPT", null,
+                    plaintext.length(), ciphertext.length()) + "</html>");
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(),
+                    "Dữ liệu không hợp lệ", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Mã hóa thất bại:\n" + ex.getMessage(),
+                    "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_encryptActionPerformed
+
+    private void btn_decryptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_decryptActionPerformed
+        String ciphertext = txt_ciphertext.getText();
+        if (ciphertext.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hãy nhập Ciphertext trước khi giải mã.");
+            return;
+        }
+        try {
+            String plaintext = TripleDESCipher.decrypt(ciphertext, txt_key.getText());
+            txt_plaintext.setText(plaintext);
+            lbl_status.setText("<html>Đã giải mã TripleDES. " + HistoryDao.tryInsert("TripleDES", "DECRYPT", null,
+                    ciphertext.length(), plaintext.length()) + "</html>");
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(),
+                    "Dữ liệu không hợp lệ", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Giải mã thất bại: sai Key hoặc bản mã bị sửa.\n" + ex.getMessage(),
+                    "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_decryptActionPerformed
+
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        String path = FileTextIO.saveText(this, txt_ciphertext, "tripledes_ciphertext.txt");
+        if (path != null) {
+            lbl_status.setText("Đã lưu tệp: " + path);
+        }
+    }//GEN-LAST:event_btn_saveActionPerformed
+
+    private void btn_openActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_openActionPerformed
+        String path = FileTextIO.openText(this, txt_ciphertext);
+        if (path != null) {
+            lbl_status.setText("Đã mở tệp: " + path);
+        }
+    }//GEN-LAST:event_btn_openActionPerformed
+
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        java.awt.EventQueue.invokeLater(() -> new frm_TripleDES().setVisible(true));
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_decrypt;
+    private javax.swing.JButton btn_encrypt;
+    private javax.swing.JButton btn_open;
+    private javax.swing.JButton btn_save;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lbl_status;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea txt_ciphertext;
+    private javax.swing.JTextField txt_key;
+    private javax.swing.JTextArea txt_plaintext;
+    // End of variables declaration//GEN-END:variables
+}
